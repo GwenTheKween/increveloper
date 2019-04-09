@@ -1,0 +1,11 @@
+urgent:
+	correctly read files
+	ghost print in screen
+	read and match input
+
+not urgent:
+	Map handling
+	save file (write and read)
+
+timeless:
+	Add correct error handling

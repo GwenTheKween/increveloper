@@ -4,7 +4,10 @@
 #include <string>
 #include <fstream>
 #include <exception>
+#include <ncurses.h>
 
 std::string readFile(std::string);
+
+void ghostPrint(std::string);
 
 #endif

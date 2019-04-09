@@ -13,11 +13,19 @@ void finishCurses(){
 }
 
 int main(){
+	//inicializacao da biblioteca e janelas
 	initCurses();
+
+	//chamada de funcoes para teste de bibliotecas
 	std::string file = readFile("codes/hello.c");
-	printw(file.c_str());
+	ghostPrint(file);
+	//renderizacao da tela
 	refresh();
+	//usado para manter a tela aberta
 	getch();
+
+
+	//termino da biblioteca
 	finishCurses();
 	return 0;
 }

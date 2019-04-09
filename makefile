@@ -1,8 +1,8 @@
 COMP = g++
 COMPFLAG = -O3 -std=c++17 -c -march=native -g
 LINKFLAGS = -lm -lncurses
-NOME = PoliFill
-CFILES = $(wildcard: *.cpp)
+NOME = increveloper
+CFILES = $(wildcard *.cpp)
 OFILES = $(CFILES:.cpp=.o)
 
 all: $(NOME)

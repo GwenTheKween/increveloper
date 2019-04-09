@@ -1,6 +1,8 @@
 #include "fileHandler.h"
 #include <ncurses.h>
 
+//========================================================================================================
+//Startup and finish functions
 void initCurses(){
 	initscr();
 	cbreak();
@@ -12,6 +14,23 @@ void finishCurses(){
 	endwin();
 }
 
+//========================================================================================================
+//Auxiliary/temporary functions
+
+void inputProcess(std::string toMatch){
+	int currPos = 0;
+	char c;
+	while(currPos < toMatch.length()){
+		c = getch();
+		if(c == toMatch[currPos]){
+			currPos ++;
+			addch(c);
+		}
+		refresh();
+	}
+}
+
+
 int main(){
 	//inicializacao da biblioteca e janelas
 	initCurses();
@@ -21,8 +40,7 @@ int main(){
 	ghostPrint(file);
 	//renderizacao da tela
 	refresh();
-	//usado para manter a tela aberta
-	getch();
+	inputProcess(file);
 
 
 	//termino da biblioteca

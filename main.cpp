@@ -1,4 +1,5 @@
-#include "dm.h"
+#include "fileHandler.h"
+#include <ncurses.h>
 
 void initCurses(){
 	initscr();
@@ -13,7 +14,8 @@ void finishCurses(){
 
 int main(){
 	initCurses();
-	printw("hello World");
+	std::string file = readFile("codes/hello.c");
+	printw(file.c_str());
 	refresh();
 	getch();
 	finishCurses();

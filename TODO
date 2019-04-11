@@ -1,9 +1,10 @@
 urgent:
-	implement player class
+	panels
+	exit code
 
 not urgent:
 	Map handling
-	save file (write and read)
+	save file obfuscation
 
 timeless:
 	Add correct error handling

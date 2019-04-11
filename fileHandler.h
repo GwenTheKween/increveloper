@@ -8,6 +8,6 @@
 
 std::string readFile(std::string);
 
-void ghostPrint(std::string);
+void ghostPrint(std::string,int,int);
 
 #endif

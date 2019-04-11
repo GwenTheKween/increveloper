@@ -18,7 +18,7 @@ std::string readFile(std::string filename){
 	return contents;
 }
 
-void ghostPrint(std::string message){
+void ghostPrint(std::string message,int starty,int startx){
 	int old_y,old_x;
 	attr_t old_attr;
 	short color_pair;
@@ -29,7 +29,7 @@ void ghostPrint(std::string message){
 	//start new state
 	attr_set(A_DIM, 0, NULL);
 	//prints the message in ghostPrint state
-	mvprintw(0,0,"%s",message.c_str());
+	mvprintw(starty,startx,"%s",message.c_str());
 
 	//retorns to old state
 	attr_set(old_attr, color_pair, NULL);

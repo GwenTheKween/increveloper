@@ -16,11 +16,17 @@ $(NOME): $(OFILES)
 %.o:%.cpp
 	$(COMP) $(COMPFLAG) $(FOLDER)$< -o $@
 
-%.o:%.c
+%.o:%.c $(wildcard *.cpp)
 	gcc -O3 -c -g $(FOLDER)$< -o $@
 
 run: $(NOME)
 	./$(NOME)
+
+debug:
+	gdb ./$(NOME)
+
+val:
+	valgrind ./$(NOME)
 
 clean:
 	rm $(OFILES) $(NOME)

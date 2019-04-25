@@ -1,7 +1,6 @@
 #include "fileHandler.h"
 #include "player.h"
-#include <ncurses.h>
-#include <menu.h>
+#include "dm.h"
 
 player p;
 
@@ -43,10 +42,15 @@ void inputProcess(std::string toMatch){
 }
 
 int main(){
+	std::vector<std::string> v;
 	//inicializacao da biblioteca e janelas
 	initCurses();
 
 	try{
+		v.push_back("enter");
+		v.push_back("exit");
+		customMenu m(v);
+		/*
 		//Login control
 		p.login("billionai");
 		p.readSave();
@@ -61,6 +65,7 @@ int main(){
 
 		p.increaseIncrement(1.0);
 		p.writeSave();
+		*/
 	}catch (std::exception e){
 		mvprintw(0,0,"%s\n",e.what());
 		getch();

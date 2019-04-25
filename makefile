@@ -13,11 +13,9 @@ $(NOME): $(OFILES)
 %.o:%.cpp %.h
 	$(COMP) $(COMPFLAG) $(FOLDER)$< -o $@
 
-%.o:%.cpp
+main.o:main.cpp
 	$(COMP) $(COMPFLAG) $(FOLDER)$< -o $@
 
-%.o:%.c $(wildcard *.cpp)
-	gcc -O3 -c -g $(FOLDER)$< -o $@
 
 run: $(NOME)
 	./$(NOME)

@@ -21,7 +21,10 @@ customMenu::~customMenu(){
 uintptr_t customMenu::process(){
 	int c;
 	ITEM* curr;
-	while((c = getch())!='q'){
+	uintptr_t ret = MENU_OPTION_DO_NOTHING;
+	bool selected = false;
+	post_menu(pointer);
+	while((c = getch())!='q' && !selected){
 		switch (c){
 			case KEY_UP:
 			case 'k':
@@ -34,16 +37,16 @@ uintptr_t customMenu::process(){
 			case ' ':
 			case 10: //enter
 				curr = current_item(pointer);
-				return (uintptr_t) item_userptr(curr);
+				ret = (uintptr_t) item_userptr(curr);
+				selected = true;
 		}
 	}
-	return MENU_OPTION_DO_NOTHING;
+	unpost_menu(pointer);
+	return ret;
 }
 
 void customMenu::post(){
-	post_menu(pointer);
 }
 
 void customMenu::unpost(){
-	unpost_menu(pointer);
 }

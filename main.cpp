@@ -1,6 +1,7 @@
 #include "fileHandler.h"
 #include "player.h"
 #include "customMenu.h"
+#include "customPanel.h"
 
 player p;
 
@@ -15,6 +16,7 @@ void initCurses(){
 
 void finishCurses(){
 	endwin();
+	printf("veio aqui\n");
 }
 
 //========================================================================================================
@@ -51,13 +53,11 @@ void print_exit(){
 	refresh();
 }
 
-int main(){
+void mainLoop(){
 	std::vector<std::string> v1;
 	std::vector<uintptr_t> v2;
 	uintptr_t mainMenuAction;
-	//inicializacao da biblioteca e janelas
-	initCurses();
-
+	panelManager p;
 	try{
 		v1.push_back("enter");
 		v2.push_back(MENU_OPTION_LOGIN);
@@ -65,10 +65,10 @@ int main(){
 		v2.push_back(MENU_OPTION_DO_NOTHING);
 		customMenu m(v1,v2);
 
+		p.addPanel(25,25,15,15);
+
 		mvprintw(0,0,"menu test, they all just print");
 		mvprintw(1,0,"press q to leave");
-		m.post();
-		refresh();
 		mainMenuAction = m.process();
 		switch(mainMenuAction){
 			case MENU_OPTION_LOGIN:
@@ -82,26 +82,21 @@ int main(){
 		}
 
 		getch();
-		/*
-		//Login control
-		p.login("billionai");
-		p.readSave();
-
-		//chamada de funcoes para teste de bibliotecas
-		std::string file = readFile("codes/hello.c");
-		ghostPrint(file,1,0);
-		move(1,0);
-		//renderizacao da tela
-		refresh();
-		inputProcess(file);
-
-		p.increaseIncrement(1.0);
-		p.writeSave();
-		*/
 	}catch (std::exception e){
 		mvprintw(0,0,"%s\n",e.what());
 		getch();
 	}
+	mvprintw(0,0,"all is well");
+	getch();
+}
+
+int main(){
+	//inicializacao da biblioteca e janelas
+	initCurses();
+
+	//loop principal do programa
+	mainLoop();
+
 	//termino da biblioteca
 	finishCurses();
 	return 0;

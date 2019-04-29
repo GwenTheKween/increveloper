@@ -1,3 +1,5 @@
 *.o
 increveloper
 saves/*
+.gdb_history
+peda*

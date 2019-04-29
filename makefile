@@ -1,6 +1,6 @@
 COMP = g++
 COMPFLAG = -O3 -std=c++17 -c -march=native -g
-LINKFLAGS = -lm -lmenu -lncurses
+LINKFLAGS = -lm -lpanel -lmenu -lncurses
 NOME = increveloper
 CFILES = $(wildcard *.cpp)
 OFILES = $(CFILES:.cpp=.o)

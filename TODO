@@ -1,6 +1,5 @@
 urgent:
-	menu
-	panels
+	menu + panels
 	exit code
 
 not urgent:
